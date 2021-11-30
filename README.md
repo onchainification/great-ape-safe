@@ -36,7 +36,7 @@ class Aave():
         assert atoken.balanceOf(destination) > bal_before
 ```
 
-By no means complete, but included platforms for now are:
+By no means complete, but included platforms currently are:
 - Aave
 - Compound
 - Convex
