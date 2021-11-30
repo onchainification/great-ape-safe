@@ -8,7 +8,7 @@ This prevents having to dive into documentation every time, either for figuring 
 
 For example, calling the [AAVE lending pool's contract](https://etherscan.io/address/0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9#readProxyContract) doesn't require any searching or address copypasting:
 
-```
+```python
 >>> safe.aave.pool.paused()
 False
 ```
@@ -38,12 +38,13 @@ class Aave():
 
 # Installation
 
-```console
+```
 git clone git@github.com:gosuto-ai/great-ape-safe.git
 ```
 ```
 pip install -r requirements-core.txt
 ```
+And copy `.env.example` to `.env` and add your API keys to it if needed.
 
 # Running
 ```
