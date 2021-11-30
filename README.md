@@ -19,7 +19,7 @@ And making a deposit becomes as simple as:
 safe.aave.deposit(usdc, usdc.balanceOf(safe))
 ```
 
-Under the hood, the protocol class `Aave` solves what exact aToken we are dealing with, makes the necessary approval, calls the right functions and makes at least one on-fork assertion of successful execution:
+Under the hood, the protocol class `Aave` solves what exact aToken we are dealing with, makes the necessary approval, calls the right functions and makes an on-fork assertion of successful execution:
 
 ```python
 class Aave():
@@ -35,6 +35,12 @@ class Aave():
         self.pool.deposit(underlying, mantissa, destination, 0)
         assert atoken.balanceOf(destination) > bal_before
 ```
+
+By no means complete, but included platforms for now are:
+- Aave
+- Compound
+- Convex
+- Curve
 
 # Installation
 
