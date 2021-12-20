@@ -1,5 +1,6 @@
 ape-safe
 eth-brownie==1.17.0
+brownie-token-tester
 pandas
 rich
 tqdm
