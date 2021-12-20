@@ -45,7 +45,7 @@ class Aave():
         # https://docs.aave.com/developers/the-core-protocol/lendingpool#withdraw
         destination = self.safe.address if not destination else destination
         bal_before = underlying.balanceOf(destination)
-        self.pool.withdraw(underlying, 256**2-1, destination)
+        self.pool.withdraw(underlying, 2**256-1, destination)
         assert underlying.balanceOf(destination) > bal_before
 
 
@@ -81,10 +81,10 @@ class Aave():
                 return
             elif timestamp <= deadline:
                 bal_before = self.aave.balanceOf(destination)
-                self.stkaave.redeem(destination, 256**2-1)
+                self.stkaave.redeem(destination, 2**256-1)
                 assert self.aave.balanceOf(destination) > bal_before
                 bal_before = self.aave.balanceOf(destination)
-                self.stkaave.claimRewards(destination, 256**2-1)
+                self.stkaave.claimRewards(destination, 2**256-1)
                 assert self.aave.balanceOf(destination) > bal_before
                 return
         C.print('no valid window found; calling cooldown now...')
