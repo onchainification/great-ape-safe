@@ -1,12 +1,27 @@
+from brownie import interface
+
+
 class Convex():
     def __init__(self, safe):
-        self.safe       = safe
+        self.safe = safe
         # tokens
-        self.cvx        = safe.contract('0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B')
-        self.cvxcrv     = safe.contract('0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7')
+        self.cvx = interface.IConvexToken(
+            '0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B',
+            owner=self.safe.account
+        )
+        self.cvxcrv = interface.IcvxCrvToken(
+            '0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7'
+            owner=self.safe.account
+        )
         # contracts
-        self.booster    = safe.contract('0xF403C135812408BFbE8713b5A23a04b3D48AAE31')
-        self.zap        = safe.contract('0x92Cf9E5e4D1Dfbf7dA0d2BB3e884a68416a65070')
+        self.booster = interface.IBooster(
+            '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
+            owner=self.safe.account
+        )
+        self.zap = interface.IClaimZap(
+            '0x92Cf9E5e4D1Dfbf7dA0d2BB3e884a68416a65070',
+            owner=self.safe.account
+        )
 
 
     def get_pool_info(self, underlying):
