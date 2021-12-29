@@ -3,8 +3,8 @@ import pytest
 
 @pytest.fixture(scope='function', autouse=True)
 def deposited(curve, tripool_lptoken, USDC, safe):
-    amount_dai = 1000 *10**18
-    amount_usdc = 1000 * 10**6
+    amount_dai = 10_000 * 10**18
+    amount_usdc = 10_000 * 10**USDC.decimals()
     amounts = [amount_dai, amount_usdc, 0]
     curve.deposit(tripool_lptoken, amounts)
 

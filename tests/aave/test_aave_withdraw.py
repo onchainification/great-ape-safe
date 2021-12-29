@@ -22,7 +22,6 @@ def test_withdraw_all(safe, aave, USDC, aUSDC):
     bal_before_usdc = USDC.balanceOf(safe)
     bal_before_ausdc = aUSDC.balanceOf(safe)
 
-    # Doesn't withdraw all currently
     aave.withdraw_all(USDC)
 
     assert USDC.balanceOf(safe) < bal_before_usdc + bal_before_ausdc

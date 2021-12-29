@@ -9,4 +9,4 @@ def test_deposit(safe, aave, USDC, aUSDC):
     aave.deposit(USDC, to_deposit)
 
     assert USDC.balanceOf(safe) == bal_before_usdc - to_deposit
-    assert aUSDC.balanceOf(safe) == bal_before_ausdc + to_deposit
+    assert aUSDC.balanceOf(safe) >= bal_before_ausdc + to_deposit

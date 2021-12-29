@@ -11,16 +11,16 @@ def deposited(compound, USDC):
     compound.deposit_eth(to_deposit_eth)
 
 def test_claim_all(safe, compound, COMP):
-    bal_before_comp = COMP.balanceOf(safe.address)
+    bal_before_comp = COMP.balanceOf(safe)
     chain.sleep(10000)
     chain.mine()
 
     compound.claim_all()
 
-    assert COMP.balanceOf(safe.address) > bal_before_comp
+    assert COMP.balanceOf(safe) > bal_before_comp
 
 def test_claim_underlying(safe, compound, COMP, USDC):
-    bal_before_comp = COMP.balanceOf(safe.address)
+    bal_before_comp = COMP.balanceOf(safe)
 
     # Fast foward chain ensure rewards are available
     chain.sleep(10000)
@@ -28,4 +28,4 @@ def test_claim_underlying(safe, compound, COMP, USDC):
 
     compound.claim(USDC)
 
-    assert COMP.balanceOf(safe.address) > bal_before_comp
+    assert COMP.balanceOf(safe) > bal_before_comp

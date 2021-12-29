@@ -14,7 +14,7 @@ def test_withdraw(safe, compound, USDC, cUSDC):
     
     before_bal_usdc = USDC.balanceOf(safe)
     before_bal_cUSDC = cUSDC.balanceOf(safe)
-    to_withdraw = 100_00 * 10**USDC.decimals()
+    to_withdraw = 100_000 * 10**USDC.decimals()
 
     compound.withdraw(USDC, to_withdraw)
 
