@@ -10,7 +10,7 @@ class Convex():
             owner=self.safe.account
         )
         self.cvxcrv = interface.IcvxCrvToken(
-            '0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7'
+            '0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7',
             owner=self.safe.account
         )
         # contracts
