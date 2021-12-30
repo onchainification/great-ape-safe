@@ -1,6 +1,11 @@
-on: ["push", "pull_request"]
+on:
+  # https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#pull_request
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
 
-name: main workflow
+name: brownie test
 
 env:
   ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
@@ -13,13 +18,13 @@ env:
 
 jobs:
 
-  tests:
+  full_test_suite:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Cache Compiler Installations
+    - name: Install compiler caches
       uses: actions/cache@v2
       with:
         path: |
@@ -27,19 +32,19 @@ jobs:
           ~/.vvm
         key: compiler-cache
 
-    - name: Setup Node.js
+    - name: Set up Node.js
       uses: actions/setup-node@v1
 
-    - name: Install Ganache
+    - name: Install Ganache CLI
       run: npm install -g ganache-cli@6.12.2
 
-    - name: Setup Python 3.9
+    - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
 
-    - name: Install Requirements
+    - name: Install Python packages
       run: pip install -r requirements-dev.txt
 
-    - name: Run Tests
+    - name: Run all tests
       run: touch .env; brownie test
