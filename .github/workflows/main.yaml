@@ -1,0 +1,50 @@
+on:
+  # https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#pull_request
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+name: brownie test
+
+env:
+  ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  WEB3_INFURA_PROJECT_ID: ${{ secrets.WEB3_INFURA_PROJECT_ID }}
+
+  # increasing available memory for node reduces issues with ganache crashing
+  # https://nodejs.org/api/cli.html#cli_max_old_space_size_size_in_megabytes
+  NODE_OPTIONS: --max_old_space_size=4096
+
+jobs:
+
+  full_test_suite:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install compiler caches
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.solcx
+          ~/.vvm
+        key: compiler-cache
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+
+    - name: Install Ganache CLI
+      run: npm install -g ganache-cli@6.12.2
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install Python packages
+      run: pip install -r requirements-dev.txt
+
+    - name: Run all tests
+      run: touch .env; brownie test
