@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture(scope='function', autouse=True)
 def deposited(compound, USDC):
-    to_deposit_usdc = 10_000 * 10**USDC.decimals()
+    to_deposit_usdc = 100_000 * 10**USDC.decimals()
     compound.deposit(USDC, to_deposit_usdc)
 
     to_deposit_eth = 10**18
@@ -11,7 +11,7 @@ def deposited(compound, USDC):
 
 
 def test_withdraw(safe, compound, USDC, cUSDC):
-    
+
     before_bal_usdc = USDC.balanceOf(safe)
     before_bal_cUSDC = cUSDC.balanceOf(safe)
     to_withdraw = 100_000 * 10**USDC.decimals()
@@ -24,7 +24,7 @@ def test_withdraw(safe, compound, USDC, cUSDC):
 
 
 def test_withdraw_eth(safe, compound, cETH):
-    
+
     before_bal_eth= safe.account.balance()
     before_bal_ceth = cETH.balanceOf(safe)
 
