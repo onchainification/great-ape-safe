@@ -1,3 +1,5 @@
+[![brownie test](https://github.com/gosuto-ai/great-ape-safe/actions/workflows/main.yaml/badge.svg)](https://github.com/gosuto-ai/great-ape-safe/actions/workflows/main.yaml)
+
 # GreatApeSafe
 
 This is an extension of the legendary [Ape Safe](https://github.com/banteg/ape-safe), inheriting all the good stuff from `ApeSafe`, while adding some extra functions and making it protocol aware.
