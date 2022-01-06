@@ -12,7 +12,10 @@ from rich.console import Console
 from rich.pretty import pprint
 from tqdm import tqdm
 
-from great_ape_safe.api_safe import *
+from great_ape_safe.api_safe.aave import Aave
+from great_ape_safe.api_safe.compound import Compound
+from great_ape_safe.api_safe.convex import Convex
+from great_ape_safe.api_safe.curve import Curve
 
 
 C = Console()
