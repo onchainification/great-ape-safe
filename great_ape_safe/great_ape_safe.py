@@ -12,7 +12,7 @@ from rich.console import Console
 from rich.pretty import pprint
 from tqdm import tqdm
 
-from great_ape_safe.api_safe import *
+from great_ape_safe.ape_api import *
 
 
 C = Console()

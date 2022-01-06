@@ -12,7 +12,7 @@ Every method *must* make at least one assertion on fork to make sure
 the action was successful.
 """
 
-from great_ape_safe.api_safe.aave import Aave
-from great_ape_safe.api_safe.compound import Compound
-from great_ape_safe.api_safe.convex import Convex
-from great_ape_safe.api_safe.curve import Curve
+from great_ape_safe.ape_api.aave import Aave
+from great_ape_safe.ape_api.compound import Compound
+from great_ape_safe.ape_api.convex import Convex
+from great_ape_safe.ape_api.curve import Curve
