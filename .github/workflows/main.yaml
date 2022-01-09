@@ -11,6 +11,7 @@ env:
   ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   WEB3_INFURA_PROJECT_ID: ${{ secrets.WEB3_INFURA_PROJECT_ID }}
+  ETHPLORER_API: ${{ secrets.ETHPLORER_API }}
 
   # increasing available memory for node reduces issues with ganache crashing
   # https://nodejs.org/api/cli.html#cli_max_old_space_size_size_in_megabytes
