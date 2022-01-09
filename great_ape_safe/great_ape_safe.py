@@ -12,10 +12,11 @@ from rich.console import Console
 from rich.pretty import pprint
 from tqdm import tqdm
 
-from great_ape_safe.api_safe.aave import Aave
-from great_ape_safe.api_safe.compound import Compound
-from great_ape_safe.api_safe.convex import Convex
-from great_ape_safe.api_safe.curve import Curve
+from great_ape_safe.ape_api.aave import Aave
+from great_ape_safe.ape_api.compound import Compound
+from great_ape_safe.ape_api.convex import Convex
+from great_ape_safe.ape_api.curve import Curve
+from great_ape_safe.ape_api.saddle import Saddle
 
 
 C = Console()
@@ -42,6 +43,7 @@ class GreatApeSafe(ApeSafe):
         self.init_compound()
         self.init_convex()
         self.init_curve()
+        self.init_saddle()
 
 
     def init_aave(self):
@@ -58,6 +60,10 @@ class GreatApeSafe(ApeSafe):
 
     def init_curve(self):
         self.curve = Curve(self)
+
+
+    def init_saddle(self):
+        self.saddle = Saddle(self)
 
 
     def take_snapshot(self, tokens):
