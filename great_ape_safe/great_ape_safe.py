@@ -15,6 +15,7 @@ from tqdm import tqdm
 from great_ape_safe.ape_api.aave import Aave
 from great_ape_safe.ape_api.compound import Compound
 from great_ape_safe.ape_api.convex import Convex
+from great_ape_safe.ape_api.cow import Cow
 from great_ape_safe.ape_api.curve import Curve
 from great_ape_safe.ape_api.saddle import Saddle
 
@@ -27,6 +28,7 @@ class GreatApeSafe(ApeSafe):
     Child of ApeSafe object, with added functionalities:
     - contains a limited library of functions needed to ape in and out of known
       defi platforms (aave, compound, convex, curve)
+    - wrapper functions for setting (limit) orders on the cowswap protocol
     - can take a snapshot of its starting and ending balances and print the
       difference
     - one single function to estimate gas correctly (for both gnosis safe
@@ -43,6 +45,7 @@ class GreatApeSafe(ApeSafe):
         self.init_compound()
         self.init_convex()
         self.init_curve()
+        self.init_cow()
         self.init_saddle()
 
 
@@ -56,6 +59,14 @@ class GreatApeSafe(ApeSafe):
 
     def init_convex(self):
         self.convex = Convex(self)
+
+
+    def init_cow(self):
+        self.cow = Cow(self, prod=True)
+
+
+    def init_cow_staging(self):
+        self.cow = Cow(self, prod=False)
 
 
     def init_curve(self):
@@ -169,3 +180,4 @@ class GreatApeSafe(ApeSafe):
             self.print_snapshot()
         if post:
             self.post_transaction(safe_tx)
+
